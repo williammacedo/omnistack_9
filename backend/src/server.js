@@ -1,17 +1,21 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const routes = require('./config/routes')
+const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./config/routes");
 
-const app = express()
+const app = express();
 
-mongoose.connect('mongodb+srv://omnistack:omnistackmongo@omnistack-pagrn.mongodb.net/aircnc?retryWrites=true&w=majority', {
+mongoose.connect(
+  //Mongo Local Trabalho
+  "mongodb://127.0.0.1:8081/aircnc?retryWrites=true&w=majority",
+  {
+    //MongoDB Atlas
+    // 'mongodb+srv://omnistack:omnistackmongo@omnistack-pagrn.mongodb.net/aircnc?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-})
+  }
+);
 
-app.use(express.json())
-app.use(routes)
+app.use(express.json());
+app.use(routes);
 
-// console.log('Sistema sendo disponibilizado na porta 3333')
-
-app.listen(3333)
+app.listen(3333);
