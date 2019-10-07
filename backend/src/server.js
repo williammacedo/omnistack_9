@@ -1,20 +1,24 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
 const routes = require("./config/routes");
 
 const app = express();
 
 mongoose.connect(
   //Mongo Local Trabalho
-  "mongodb://127.0.0.1:8081/aircnc?retryWrites=true&w=majority",
-  {
-    //MongoDB Atlas
-    // 'mongodb+srv://omnistack:omnistackmongo@omnistack-pagrn.mongodb.net/aircnc?retryWrites=true&w=majority', {
+  // "mongodb://127.0.0.1:8081/aircnc?retryWrites=true&w=majority",
+  // {
+  //MongoDB Atlas
+  'mongodb+srv://omnistack:omnistackmongo@omnistack-pagrn.mongodb.net/aircnc?retryWrites=true&w=majority'
+  , {
     useNewUrlParser: true,
     useUnifiedTopology: true
   }
 );
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
